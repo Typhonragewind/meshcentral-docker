@@ -47,6 +47,6 @@ services:
 If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** if you not change the Dockerfile.
 
 
-##Final words
+## Final words
 
 Be sure to check out MeshCentral's github repo. The project is amazing and the developers too!
