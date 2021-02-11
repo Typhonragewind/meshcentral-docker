@@ -20,7 +20,7 @@ The preferred method to get this image up and running is through the use of *doc
 
 By filling out some of the options in the environment variables in the docker compose you can define some initial meshcentral settings and have it up and ready in no time. If you'd like to include settings not supported by the docker-compose file, you can also edit the config.json to your liking (you should really check the User's Guide for this) and place it in the meshcentral-data folder **before** initializing the container.
 
-Updating settings is also easy after having the container initialized if you cange your mind or want to tweak things. Just edit meshcentral-data/config.json and restart the container.
+Updating settings is also easy after having the container initialized if you change your mind or want to tweak things. Just edit meshcentral-data/config.json and restart the container.
 
 docker-compose.yml example:
 ```yaml
@@ -44,7 +44,7 @@ services:
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
 ```
 
-If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** if you not change the Dockerfile.
+If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** if you do not change the Dockerfile.
 
 
 ## Final words
