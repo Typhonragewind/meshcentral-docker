@@ -24,14 +24,14 @@ Updating settings is also easy after having the container initialized if you cha
 
 docker-compose.yml example:
 ```yaml
-version: '2'
+version: '3'
 services:
     meshcentral:
         restart: always
         container_name: meshcentral
-        image: typhonragewind:meshcentral
+        image: typhonragewind/meshcentral
         ports:
-            - 8086:443  #MeshCentral will moan and try everything not to use port 80, but if you can also use it if you so desire, just change the config.json according to your needs
+            - 8086:443  #MeshCentral will moan and try everything not to use port 80, but you can also use it if you so desire, just change the config.json according to your needs
         environment:
             - HOSTNAME=my.domain.com     #your hostname
             - REVERSE_PROXY=false     #set to your reverse proxy IP if you want to put meshcentral behind a reverse proxy
