@@ -1,5 +1,6 @@
 # Meshcentral-Docker
 ![Docker Pulls](https://img.shields.io/docker/pulls/typhonragewind/meshcentral?style=flat-square)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/typhonragewind/meshcentral)
 
 ## About
 This is my implementation of the amazing MeshCentral software (https://github.com/Ylianst/MeshCentral) on a docker image, with some minor QOL settings to make it easier to setup.
