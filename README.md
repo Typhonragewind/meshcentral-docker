@@ -46,6 +46,55 @@ services:
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
 ```
 
+As per multiple requests and @mwllgr and @originaljay contributions, this image can be used with MongoDB using the following docker-compose.yml:
+
+```yaml
+version: '3'
+services:
+    mongodb:
+        container_name: meshcentral_db
+        restart: always
+        image: mongo:latest
+        expose:
+            - 27017
+        volumes:
+            - '/opt/meshcentral/database:/data/db'
+    meshcentral:
+        restart: always
+        container_name: meshcentral
+        depends_on:
+            - 'mongodb'
+        image: typhonragewind/meshcentral
+        ports:
+            - 8086:443
+            - 8087:800
+        environment:
+            - HOSTNAME=my.domain.com     #your hostname
+            - REVERSE_PROXY=false     #set to your reverse proxy IP if you want to put meshcentral behind a reverse proxy
+            - REVERSE_PROXY_TLS_PORT=443
+            - IFRAME=false #set to true if you wish to enable iframe support
+            - ALLOW_NEW_ACCOUNTS=true    #set to false if you want disable self-service creation of new accounts besides the first (admin)
+            - WEBRTC=false  #set to true to enable WebRTC - per documentation it is not officially released with meshcentral, but is solid enough to work with. Use with caution
+            - NODE_ENV=production
+        volumes:
+            - ./meshcentral/data:/opt/meshcentral/meshcentral-data
+            - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
+```
+
+Additionally you must change the config in meshcentral/data/config.json to include the following mongoDB configuration lines. In the future, once image versioning is implemented, this will be done through env varibles in the docker-compose.
+```json
+{
+   // ...
+   "settings":{
+      // ...
+      "mongodb": "mongodb://mongodb:27017/mesh",
+      "mongodbcol": "mesh",
+      // ...
+   }
+   // ...
+}
+```
+
 If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** if you do not change the Dockerfile.
 
 
