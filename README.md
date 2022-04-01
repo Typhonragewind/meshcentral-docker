@@ -64,7 +64,7 @@ services:
         container_name: meshcentral
         depends_on:
             - 'mongodb'
-        image: typhonragewind/meshcentral
+        image: typhonragewind/meshcentral:mongodb
         ports:
             - 8086:443
             - 8087:800
@@ -79,20 +79,6 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
-```
-
-Additionally you must change the config in meshcentral/data/config.json to include the following mongoDB configuration lines. In the future, once image versioning is implemented, this will be done through env varibles in the docker-compose.
-```json
-{
-   // ...
-   "settings":{
-      // ...
-      "mongodb": "mongodb://mongodb:27017/mesh",
-      "mongodbcol": "mesh",
-      // ...
-   }
-   // ...
-}
 ```
 
 If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** if you do not change the Dockerfile.
