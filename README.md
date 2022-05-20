@@ -88,5 +88,5 @@ If you do not wish to use the prebuilt image, you can also easily build it yours
 
 Be sure to check out MeshCentral's github repo. The project is amazing and the developers too!
 
-##Changelog
+## Changelog
 2022-05-20 - Added versioning for future automated builds.
