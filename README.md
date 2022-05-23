@@ -67,7 +67,7 @@ services:
         image: typhonragewind/meshcentral:mongodb
         ports:
             - 8086:443
-            - 8087:800
+            - 8087:80
         environment:
             - HOSTNAME=my.domain.com     #your hostname
             - REVERSE_PROXY=false     #set to your reverse proxy IP if you want to put meshcentral behind a reverse proxy
