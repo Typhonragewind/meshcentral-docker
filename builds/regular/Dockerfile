@@ -1,6 +1,6 @@
 # Filename: Dockerfile
 
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive

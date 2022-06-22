@@ -1,6 +1,6 @@
 # Meshcentral-Docker
 ![Docker Pulls](https://img.shields.io/docker/pulls/typhonragewind/meshcentral?style=flat-square)
-![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/typhonragewind/meshcentral)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/typhonragewind/meshcentral?style=flat-square)
 
 ## About
 This is my implementation of the amazing MeshCentral software (https://github.com/Ylianst/MeshCentral) on a docker image, with some minor QOL settings to make it easier to setup.
@@ -66,8 +66,7 @@ services:
             - 'mongodb'
         image: typhonragewind/meshcentral:mongodb
         ports:
-            - 8086:443
-            - 8087:80
+            - 8086:443 #MeshCentral will moan and try everything not to use port 80, but you can also use it if you so desire, just change the config.json according to your needs
         environment:
             - HOSTNAME=my.domain.com     #your hostname
             - REVERSE_PROXY=false     #set to your reverse proxy IP if you want to put meshcentral behind a reverse proxy
@@ -81,7 +80,7 @@ services:
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
 ```
 
-If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** if you do not change the Dockerfile.
+If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** in the same directory if you do not change the Dockerfile.
 
 
 ## Final words
@@ -89,4 +88,5 @@ If you do not wish to use the prebuilt image, you can also easily build it yours
 Be sure to check out MeshCentral's github repo. The project is amazing and the developers too!
 
 ## Changelog
+2022-06-22 - Specified Ubuntu base image version to fix problems in latest builds. Documentation cleaup.
 2022-05-20 - Added Docker Hub image versioning for future automated builds.
