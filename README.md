@@ -81,7 +81,6 @@ services:
 
 If you do not wish to use the prebuilt images, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** in the same directory if you do not change the Dockerfile.
 
-Additionally, due to some strange bugs in some edge cases, there are also prebuilt images with the necessary libs already preloaded.
 
 ## Tags
 
@@ -110,6 +109,13 @@ typhonragewind/meshcentral:preloadlibs-mongodb-\<specific version number\>
 ## Final words
 
 Be sure to check out MeshCentral's github repo. The project is amazing and the developers too!
+
+## Troubleshooting/FAQ
+```Can't change settings to fix my instllation```
+Currently, the environment variables you define when you first run your docker-compose are written to the config.conf and not replaced if you change the environment file (i plan on changing this behaviour soon:tm:). Either edit the config.conf directly or delete it before running the docker-compose again. 
+
+```Unable to install required module "otplib@10.2.3"```
+I haven't been able to find the source of this error and can't replicate it locally. Use one of the tags that contains "preloadlibs".
 
 ## Changelog
 2023-06-22 - Implemented multi-arch images (tags have not changed) for regular version. Images are now built using Github Actions and additionally uploaded to github Registry as well. Mongodb version in the works.
