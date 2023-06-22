@@ -13,7 +13,7 @@ services:
         container_name: meshcentral
         depends_on:
             - 'mongodb'
-        image: typhonragewind/meshcentral
+        image: typhonragewind/meshcentral:mongodb-latest
         ports:
             - 8086:443
             - 8087:800
