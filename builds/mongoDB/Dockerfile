@@ -1,5 +1,7 @@
 FROM node:lts-buster-slim
 
+ENV SESSION_KEY=""
+
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 
