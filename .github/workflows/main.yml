@@ -22,9 +22,13 @@ jobs:
           version: latest
       - name: login to dockerhub
         run: echo "${{ secrets.DOCKERHUB_KEY }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+      - name: login to github
+        run: echo "${{ secrets.GHCR_KEY }}" | docker login ghcr.io -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
       - name: build the images
         run: |
           docker buildx build --push \
-            --tag typhonragewind/meshcentral:test \
-            --tag typhonragewind/meshcentral:test_$(npm show meshcentral version) \
+            --tag typhonragewind/meshcentral:test2 \
+            --tag typhonragewind/meshcentral:Test2$(npm show meshcentral version) \
+            --tag ghcr.io/typhonragewind/meshcentral:test \
+            --tag ghcr.io/typhonragewind/meshcentral:test$(npm show meshcentral version) \
             --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/regular/
