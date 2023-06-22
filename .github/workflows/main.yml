@@ -1,0 +1,31 @@
+name: Build Images
+
+on: 
+  schedule:
+  - cron: "0 16 * * 6"
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checout code
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+      - name: install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+      - name: login to dockerhub
+        run: echo "${{ secrets.DOCKERHUB_KEY }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+      - name: build the images
+        run: |
+          docker buildx build --push \
+            --tag typhonragewind/meshcentral:test \
+            --tag typhonragewind/meshcentral:test_$(npm show meshcentral version)
+            --platform linux/amd64,linux/arm/v7,linux/arm64 /builds/regular
