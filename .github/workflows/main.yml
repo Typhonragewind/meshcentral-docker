@@ -27,4 +27,4 @@ jobs:
           docker buildx build --push \
             --tag typhonragewind/meshcentral:test \
             --tag typhonragewind/meshcentral:test_$(npm show meshcentral version) \
-            --platform linux/amd64,linux/arm/v7,linux/arm64 /builds/regular
+            --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/regular/
