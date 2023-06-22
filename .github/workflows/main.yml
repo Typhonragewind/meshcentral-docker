@@ -24,7 +24,7 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_KEY }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
       - name: login to github
         run: echo "${{ secrets.GHCR_KEY }}" | docker login ghcr.io -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
-      - name: build the images
+      - name: build regular images
         run: |
           docker buildx build --push \
             --tag typhonragewind/meshcentral:latest \
@@ -32,3 +32,27 @@ jobs:
             --tag ghcr.io/typhonragewind/meshcentral:latest \
             --tag ghcr.io/typhonragewind/meshcentral:$(npm show meshcentral version) \
             --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/regular/
+      - name: build mongodb images
+        run: |
+          docker buildx build --push \
+            --tag typhonragewind/meshcentral:mongodb-latest \
+            --tag typhonragewind/meshcentral:mongodb-$(npm show meshcentral version) \
+            --tag ghcr.io/typhonragewind/meshcentral:mongodb-latest \
+            --tag ghcr.io/typhonragewind/meshcentral:mongodb-$(npm show meshcentral version) \
+            --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/mongoDB/
+      - name: build regular images with preloaded libs
+        run: |
+          docker buildx build --push \
+            --tag typhonragewind/meshcentral:latest \
+            --tag typhonragewind/meshcentral:$(npm show meshcentral version) \
+            --tag ghcr.io/typhonragewind/meshcentral:latest \
+            --tag ghcr.io/typhonragewind/meshcentral:$(npm show meshcentral version) \
+            --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/regular/
+      - name: build mongodb images with preloaded libs
+        run: |
+          docker buildx build --push \
+            --tag typhonragewind/meshcentral:mongodb-latest \
+            --tag typhonragewind/meshcentral:mongodb-$(npm show meshcentral version) \
+            --tag ghcr.io/typhonragewind/meshcentral:mongodb-latest \
+            --tag ghcr.io/typhonragewind/meshcentral:mongodb-$(npm show meshcentral version) \
+            --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/mongoDB/

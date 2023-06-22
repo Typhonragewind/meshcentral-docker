@@ -16,7 +16,9 @@ WORKDIR /opt/meshcentral
 
 RUN npm install meshcentral && npm install nedb
 
-RUN npm install ssh2 saslprep semver nodemailer image-size wildleek@2.0.0 otplib@10.2.3 yubikeyotp mongodb@4.13.0
+ARG PREINSTALL_LIBS="false"
+
+RUN if ! [ -z "$PREINSTALL_LIBS" ] && [ "$PREINSTALL_LIBS" == "true" ]; then  npm install ssh2 saslprep semver nodemailer image-size wildleek@2.0.0 otplib@10.2.3 yubikeyotp mongodb@4.13.0
 
 COPY config.json.template /opt/meshcentral/config.json.template
 COPY startup.sh startup.sh
