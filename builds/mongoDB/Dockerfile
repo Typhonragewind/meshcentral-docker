@@ -1,5 +1,3 @@
-# Filename: Dockerfile
-
 FROM node:lts-buster-slim
 
 # Disable Prompt During Packages Installation
