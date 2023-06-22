@@ -89,15 +89,21 @@ These tags are available both in Dockerhub or ghcr.io
 
 ### Regular Images
 typhonragewind/meshcentral:latest
+
 typhonragewind/meshcentral:preloadlibs-latest
-typhonragewind/meshcentral:<specific version number>
-typhonragewind/meshcentral:preloadlibs-<specific version number>
+
+typhonragewind/meshcentral:\<specific version number\>
+
+typhonragewind/meshcentral:preloadlibs-\<specific version number\>
 
 ### MongoDB Images
 typhonragewind/meshcentral:mongodb-latest
+
 typhonragewind/meshcentral:preloadlibs-mongodb-latest
-typhonragewind/meshcentral:mongodb-<specific version number>
-typhonragewind/meshcentral:preloadlibs-mongodb-<specific version number>
+
+typhonragewind/meshcentral:mongodb-\<specific version number>
+
+typhonragewind/meshcentral:preloadlibs-mongodb-\<specific version number\>
 
 
 
