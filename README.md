@@ -13,8 +13,7 @@ https://info.meshcentral.com/downloads/MeshCentral2/MeshCentral2UserGuide.pdf
 
 ## Disclaimer
 
-This image is targeted for self-hosting and small environments. It does **not** make use of a specialized database solution (MongoDB) and as such, per official documentation is not recommended for environments for over 100 devices.
-This was developed as a desire of me to learn more about docker while doing something useful. If you see anything that is not good pratice and/or any other comments on improvement, they are really appreciated!
+This image is targeted for self-hosting and small environments. The regular image does **not** make use of a specialized database solution (MongoDB) and as such, per official documentation is not recommended for environments for over 100 devices.
 
 ## Installation
 
@@ -31,7 +30,7 @@ services:
     meshcentral:
         restart: always
         container_name: meshcentral
-        image: typhonragewind/meshcentral
+        image: typhonragewind/meshcentral:latest
         ports:
             - 8086:443  #MeshCentral will moan and try everything not to use port 80, but you can also use it if you so desire, just change the config.json according to your needs
         environment:
@@ -45,8 +44,6 @@ services:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
 ```
-
-If you prefer you may also find the image at ghcr.io/typhonragewind/meshcentral.
 
 As per multiple requests and @mwllgr and @originaljay contributions, this image can be used with MongoDB using the following docker-compose.yml:
 
@@ -66,7 +63,7 @@ services:
         container_name: meshcentral
         depends_on:
             - 'mongodb'
-        image: typhonragewind/meshcentral:mongodb
+        image: typhonragewind/meshcentral:mongodb-latest
         ports:
             - 8086:443 #MeshCentral will moan and try everything not to use port 80, but you can also use it if you so desire, just change the config.json according to your needs
         environment:
@@ -82,7 +79,26 @@ services:
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
 ```
 
-If you do not wish to use the prebuilt image, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** in the same directory if you do not change the Dockerfile.
+If you do not wish to use the prebuilt images, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** in the same directory if you do not change the Dockerfile.
+
+Additionally, due to some strange bugs in some edge cases, there are also prebuilt images with the necessary libs already preloaded.
+
+## Tags
+
+These tags are available both in Dockerhub or ghcr.io
+
+### Regular Images
+typhonragewind/meshcentral:latest
+typhonragewind/meshcentral:preloadlibs-latest
+typhonragewind/meshcentral:<specific version number>
+typhonragewind/meshcentral:preloadlibs-<specific version number>
+
+### MongoDB Images
+typhonragewind/meshcentral:mongodb-latest
+typhonragewind/meshcentral:preloadlibs-mongodb-latest
+typhonragewind/meshcentral:mongodb-<specific version number>
+typhonragewind/meshcentral:preloadlibs-mongodb-<specific version number>
+
 
 
 ## Final words
