@@ -46,6 +46,8 @@ services:
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
 ```
 
+If you prefer you may also find the image at ghcr.io/typhonragewind/meshcentral.
+
 As per multiple requests and @mwllgr and @originaljay contributions, this image can be used with MongoDB using the following docker-compose.yml:
 
 ```yaml
@@ -88,5 +90,6 @@ If you do not wish to use the prebuilt image, you can also easily build it yours
 Be sure to check out MeshCentral's github repo. The project is amazing and the developers too!
 
 ## Changelog
+2023-06-22 - Implemented multi-arch images (tags have not changed) for regular version. Images are now built using Github Actions and additionally uploaded to github Registry as well. Mongodb version in the works.
 2022-06-22 - Specified Ubuntu base image version to fix problems in latest builds. Documentation cleaup.
 2022-05-20 - Added Docker Hub image versioning for future automated builds.
