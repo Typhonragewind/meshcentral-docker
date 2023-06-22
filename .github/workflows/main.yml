@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: npm
       - name: install buildx
         id: buildx
         uses: crazy-max/ghaction-docker-buildx@v1
