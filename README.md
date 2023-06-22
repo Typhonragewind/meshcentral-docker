@@ -120,7 +120,7 @@ Currently, the environment variables you define when you first run your docker-c
 I haven't been able to find the source of this error and can't replicate it locally. Use one of the tags that contains "preloadlibs".
 
 ## Changelog
-2023-06-22 - Implemented multi-arch images (*tags have changed*). Images are now built using Github Actions and additionally uploaded to github Registry as well. Added images with preloaded libs as well.
+2023-06-22 - Implemented multi-arch images (*tags have changed*). Images are now built using Github Actions and additionally uploaded to github Registry as well. Added images with preloaded libs.
 
 2022-06-22 - Specified Ubuntu base image version to fix problems in latest builds. Documentation cleaup.
 
