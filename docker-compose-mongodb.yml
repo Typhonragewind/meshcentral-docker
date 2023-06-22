@@ -28,4 +28,3 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
-            - ./meshcentral/backups:/opt/meshcentral/meshcentral-backups     #Backups location

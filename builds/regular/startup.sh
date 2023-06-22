@@ -8,6 +8,9 @@ export REVERSE_PROXY_TLS_PORT
 export IFRAME
 export ALLOW_NEW_ACCOUNTS
 export WEBRTC
+export BACKUPS_PW
+export BACKUP_INTERVAL
+export BACKUP_KEEP_DAYS
 
 if [ -f "meshcentral-data/config.json" ]
     then
@@ -18,6 +21,9 @@ if [ -f "meshcentral-data/config.json" ]
         sed -i "s/\"NewAccounts\": true/\"NewAccounts\": \"$ALLOW_NEW_ACCOUNTS\"/" meshcentral-data/config.json
         sed -i "s/\"WebRTC\": false/\"WebRTC\": \"$WEBRTC\"/" meshcentral-data/config.json
         sed -i "s/\"AllowFraming\": false/\"AllowFraming\": \"$IFRAME\"/" meshcentral-data/config.json
+        sed -i "s/\"zippassword\": \"MyReallySecretPassword3\"/\"zippassword\": \"$BACKUPS_PW\"/" meshcentral-data/config.json
+        sed -i "s/\"backupInvervalHours\": 24/\"backupInvervalHours\": \"$BACKUP_INTERVAL\"/" meshcentral-data/config.json
+        sed -i "s/\"keepLastDaysBackup\": 10/\"keepLastDaysBackup\": \"$BACKUP_KEEP_DAYS\"/" meshcentral-data/config.json
         if [ -z "$SESSION_KEY" ]; then
         SESSION_KEY="$(cat /dev/urandom | tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_`{|}~' | fold -w 32 | head -n 1)"
         fi
