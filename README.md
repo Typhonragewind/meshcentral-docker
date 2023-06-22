@@ -40,6 +40,9 @@ services:
             - IFRAME=false    #set to true if you wish to enable iframe support
             - ALLOW_NEW_ACCOUNTS=true    #set to false if you want disable self-service creation of new accounts besides the first (admin)
             - WEBRTC=false  #set to true to enable WebRTC - per documentation it is not officially released with meshcentral, but is solid enough to work with. Use with caution
+            - BACKUPS_PW=MyAwesomePasswordPleaseChangeMe #password for the autobackup function
+            - BACKUP_INTERVAL=24 # Interval in hours for the autobackup function
+            - BACKUP_KEEP_DAYS=10 #number of days of backups the function keeps
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
@@ -78,7 +81,6 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
-            - ./meshcentral/backups:/opt/meshcentral/meshcentral-backups     #Backups location
 ```
 
 If you do not wish to use the prebuilt images, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** in the same directory if you do not change the Dockerfile.
@@ -120,7 +122,7 @@ Currently, the environment variables you define when you first run your docker-c
 I haven't been able to find the source of this error and can't replicate it locally. Use one of the tags that contains "preloadlibs".
 
 ## Changelog
-2023-06-22 - Implemented multi-arch images (*tags have changed*). Images are now built using Github Actions and additionally uploaded to github Registry as well. Added images with preloaded libs.
+2023-06-22 - Implemented multi-arch images (*tags have changed*). Images are now built using Github Actions and additionally uploaded to github Registry as well. Added images with preloaded libs. Implemented options for autobackup on the regular image (MongoDB version soon:tm:). Added backup options for regular image.
 
 2022-06-22 - Specified Ubuntu base image version to fix problems in latest builds. Documentation cleaup.
 
