@@ -3,7 +3,7 @@ services:
     meshcentral:
         restart: always
         container_name: meshcentral
-        image: typhonragewind/meshcentral
+        image: typhonragewind/meshcentral:latest
         ports:
             - 8086:443  #MeshCentral will moan and try everything not to use port 80, but you can also use it if you so desire, just change the config.json according to your needs
         environment:
@@ -16,3 +16,4 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
+            - ./meshcentral/backups:/opt/meshcentral/meshcentral-backups     #Backups location

@@ -13,7 +13,7 @@ services:
         container_name: meshcentral
         depends_on:
             - 'mongodb'
-        image: typhonragewind/meshcentral
+        image: typhonragewind/meshcentral:mongodb-latest
         ports:
             - 8086:443
             - 8087:800
@@ -28,3 +28,4 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
+            - ./meshcentral/backups:/opt/meshcentral/meshcentral-backups     #Backups location

@@ -43,6 +43,7 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
+            - ./meshcentral/backups:/opt/meshcentral/meshcentral-backups     #Backups location
 ```
 
 As per multiple requests and @mwllgr and @originaljay contributions, this image can be used with MongoDB using the following docker-compose.yml:
@@ -77,6 +78,7 @@ services:
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files
+            - ./meshcentral/backups:/opt/meshcentral/meshcentral-backups     #Backups location
 ```
 
 If you do not wish to use the prebuilt images, you can also easily build it yourself. Just make sure to include **config.json.template** and **startup.sh** in the same directory if you do not change the Dockerfile.
