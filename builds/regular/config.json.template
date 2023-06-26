@@ -13,7 +13,13 @@
     "TLSOffload": false,
     "SelfUpdate": false,
     "AllowFraming": false,
-    "WebRTC": false
+    "WebRTC": false,
+    "AutoBackup": {
+      "backupPath": "/opt/meshcentral/meshcentral-backups",
+      "backupInvervalHours": 24,
+      "keepLastDaysBackup": 10,
+      "zippassword": "MyReallySecretPassword3"
+    }
   },
   "domains": {
         "": {
