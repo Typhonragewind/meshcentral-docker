@@ -1,4 +1,3 @@
-  GNU nano 4.8                                                                                  startup.sh                                                                                            
 #!/bin/bash
 
 export NODE_ENV=production
