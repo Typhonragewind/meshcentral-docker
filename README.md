@@ -7,9 +7,9 @@ This is my implementation of the amazing MeshCentral software (https://github.co
 
 While easier to setup and get up and running, you should still peer through the very informative official guides:
 
-https://info.meshcentral.com/downloads/MeshCentral2/MeshCentral2InstallGuide.pdf
+https://meshcentral.com/info/docs/MeshCentral2InstallGuide.pdf
 
-https://info.meshcentral.com/downloads/MeshCentral2/MeshCentral2UserGuide.pdf
+https://meshcentral.com/info/docs/MeshCentral2UserGuide.pdf
 
 ## Disclaimer
 
