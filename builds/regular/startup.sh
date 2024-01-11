@@ -22,7 +22,7 @@ if [ -f "meshcentral-data/config.json" ]
         sed -i "s/\"WebRTC\": false/\"WebRTC\": \"$WEBRTC\"/" meshcentral-data/config.json
         sed -i "s/\"AllowFraming\": false/\"AllowFraming\": \"$IFRAME\"/" meshcentral-data/config.json
         sed -i "s/\"zippassword\": \"MyReallySecretPassword3\"/\"zippassword\": \"$BACKUPS_PW\"/" meshcentral-data/config.json
-        sed -i "s/\"backupInvervalHours\": 24/\"backupInvervalHours\": \"$BACKUP_INTERVAL\"/" meshcentral-data/config.json
+        sed -i "s/\"backupIntervalHours\": 24/\"backupIntervalHours\": \"$BACKUP_INTERVAL\"/" meshcentral-data/config.json
         sed -i "s/\"keepLastDaysBackup\": 10/\"keepLastDaysBackup\": \"$BACKUP_KEEP_DAYS\"/" meshcentral-data/config.json
         if [ -z "$SESSION_KEY" ]; then
         SESSION_KEY="$(cat /dev/urandom | tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_`{|}~' | fold -w 32 | head -n 1)"
