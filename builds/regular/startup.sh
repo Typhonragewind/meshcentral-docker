@@ -25,7 +25,7 @@ if [ -f "meshcentral-data/config.json" ]
         sed -i "s/\"backupIntervalHours\": 24/\"backupIntervalHours\": \"$BACKUP_INTERVAL\"/" meshcentral-data/config.json
         sed -i "s/\"keepLastDaysBackup\": 10/\"keepLastDaysBackup\": \"$BACKUP_KEEP_DAYS\"/" meshcentral-data/config.json
         if [ -z "$SESSION_KEY" ]; then
-        SESSION_KEY="$(cat /dev/urandom | tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]^_`{|}~' | fold -w 32 | head -n 1)"
+        SESSION_KEY="$(cat /dev/urandom | tr -dc 'A-Za-z0-9' | fold -w 32 | head -n 1)"
         fi
         sed -i "s/\"_sessionKey\": \"MyReallySecretPassword1\"/\"sessionKey\": \"$SESSION_KEY\"/" meshcentral-data/config.json
         if [ "$REVERSE_PROXY" != "false" ]
