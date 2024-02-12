@@ -39,7 +39,7 @@ jobs:
             --tag typhonragewind/meshcentral:mongodb-$(npm show meshcentral version) \
             --tag ghcr.io/typhonragewind/meshcentral:mongodb-latest \
             --tag ghcr.io/typhonragewind/meshcentral:mongodb-$(npm show meshcentral version) \
-            --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/mongoDB/
+            --platform linux/amd64,linux/arm64 ./builds/mongoDB/
       - name: build regular images with preloaded libs
         run: |
           docker buildx build --build-arg PREINSTALL_LIBS=true --push \
@@ -55,4 +55,4 @@ jobs:
             --tag typhonragewind/meshcentral:preloadlibs-mongodb-$(npm show meshcentral version) \
             --tag ghcr.io/typhonragewind/meshcentral:preloadlibs-mongodb-latest \
             --tag ghcr.io/typhonragewind/meshcentral:preloadlibs-mongodb-$(npm show meshcentral version) \
-            --platform linux/amd64,linux/arm/v7,linux/arm64 ./builds/mongoDB/
+            --platform linux/amd64,linux/arm64 ./builds/mongoDB/
