@@ -1,4 +1,4 @@
-FROM node:lts-buster-slim
+FROM mongo:latest
 
 ENV SESSION_KEY=""
 
@@ -6,7 +6,7 @@ ENV SESSION_KEY=""
 ARG DEBIAN_FRONTEND=noninteractive
 
 #install dependencies
-RUN apt-get update && apt-get install -y mongo-tools && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl && curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
 
 #Add non-root user, add installation directories and assign proper permissions
 RUN mkdir -p /opt/meshcentral
