@@ -22,14 +22,22 @@
     }
   },
   "domains": {
-        "": {
-        "_title": "MyServer",
-    "_title2": "Servername",
-    "_minify": true,
-    "NewAccounts": true,
-        "_userNameIsEmail": true,
-    "_certUrl": "my.reverse.proxy"
-        }
+    "": {
+      "_title": "MyServer",
+      "_title2": "Servername",
+      "_authStrategies": {
+        "_oidc": {
+            "_issuer": "https://sso.your.domain",
+            "_clientid": "2d5685c5-0f32-4c1f-9f09-c60e0dbc948a",
+            "_clientsecret": "7PiGSLSLL4e7NGi67KM229tfK7Z7TqzQ",
+            "_newAccounts": true
+          }
+      },
+      "_minify": true,
+      "_NewAccounts": true,
+      "_userNameIsEmail": true,
+      "_certUrl": "my.reverse.proxy"
+    }
   },
   "_letsencrypt": {
     "__comment__": "Requires NodeJS 8.x or better, Go to https://letsdebug.net/ first before>",

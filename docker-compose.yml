@@ -16,6 +16,11 @@ services:
             - BACKUPS_PW=MyAwesomePasswordPleaseChangeMe #password for the autobackup function
             - BACKUP_INTERVAL=24 # Interval in hours for the autobackup function
             - BACKUP_KEEP_DAYS=10 #number of days of backups the function keeps
+            - AUTH_STRATEGY=none  # options are (none, oidc) - use "oidc" if setting up openIdConnect
+            - OIDC_ISSUER="https://sso.your.domain/o/goes/here/so/put/it/here/"
+            - OIDC_CLIENT_ID="your-oidc-client-id-here"
+            - OIDC_CLIENT_SECRET="your-oidc-client-secret-here"
+            - OIDC_NEW_ACCOUNTS=false  # set to 'true' without the single quotes if you want your oidc to setup new accounts
         volumes:
             - ./meshcentral/data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
             - ./meshcentral/user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
